@@ -33,7 +33,8 @@ export default function ModernWeatherApp() {
   const [locationName, setLocationName] = useState("Detecting location...")
   const [locationPermission, setLocationPermission] = useState<"granted" | "denied" | "prompt">("prompt")
 
-  const API_KEY = "ee8448d0c5ed883e08fbfe91dc6c9ffc"
+  const API_KEY = import.meta.env.VITE_WEATHER_API_KEY_URL
+  const WEATHER_API_URL = import.meta.env.VITE_WEATHER_API_URL
 
   // Detect user's location
   useEffect(() => {
@@ -76,16 +77,18 @@ export default function ModernWeatherApp() {
 
         // Current weather
         const currentRes = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${API_KEY}&units=metric`,
+          `${WEATHER_API_URL}?lat=${location.lat}&lon=${location.lon}&appid=${API_KEY}&units=metric`
         )
+        if (!currentRes.ok) throw new Error("Failed to fetch current weather")
         const currentData = await currentRes.json()
         setCurrentWeather(currentData)
         setLocationName(currentData.name || "Your Location")
 
-        // Forecast (5 days)
+        // 5-day forecast
         const forecastRes = await fetch(
-          `https://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lon}&appid=${API_KEY}&units=metric`,
+          `https://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lon}&appid=${API_KEY}&units=metric`
         )
+        if (!forecastRes.ok) throw new Error("Failed to fetch forecast")
         const forecastData = await forecastRes.json()
         setForecast(forecastData.list)
 
@@ -120,7 +123,7 @@ export default function ModernWeatherApp() {
     }
 
     fetchWeatherData()
-  }, [location])
+  }, [location, API_KEY, WEATHER_API_URL])
 
   const getWeatherIcon = (iconCode: string) => {
     return `https://openweathermap.org/img/wn/${iconCode}@2x.png`
@@ -143,7 +146,7 @@ export default function ModernWeatherApp() {
     setLoading(true)
     setLocation(null)
     setLocationName("Detecting location...")
-    
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {

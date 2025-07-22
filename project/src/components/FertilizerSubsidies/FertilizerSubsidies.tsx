@@ -18,7 +18,7 @@ const FertilizerSubsidies: React.FC = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          'https://api.data.gov.in/resource/2e0e6c04-97f2-456b-9309-bf605650cb11?api-key=579b464db66ec23bdd000001caa76c4633e24c937b987e94eb25c2d9&format=json&limit=1000'
+          `${import.meta.env.VITE_FERTILIZER_API_URL}&format=json&limit=1000`
         );
         const result = await response.json();
         setData(result.records);

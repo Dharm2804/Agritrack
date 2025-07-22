@@ -32,10 +32,10 @@ const QuestionAnswer: React.FC = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          'https://api.data.gov.in/resource/cef25fe2-9231-4128-8aec-2c948fedd43f',
+          `${import.meta.env.VITE_QNA_BASEURL_API_URL}`,
           {
             params: {
-              'api-key': '579b464db66ec23bdd000001caa76c4633e24c937b987e94eb25c2d9',
+              'api-key': `${import.meta.env.VITE_QNA_APIKEY_API_URL}`,
               format: 'json',
               limit: 1000 // Increased limit to get more data
             }

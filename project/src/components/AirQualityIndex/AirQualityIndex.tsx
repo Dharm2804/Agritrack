@@ -77,7 +77,7 @@ const AirQualityIndex: React.FC = () => {
         setError(null);
         
         const response = await fetch(
-          `https://api.data.gov.in/resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=579b464db66ec23bdd000001caa76c4633e24c937b987e94eb25c2d9&format=json&limit=1000`
+          `${import.meta.env.VITE_AQI_API_URL}`
         );
         const result = await response.json();
         

@@ -28,7 +28,7 @@ const App: React.FC = () => {
     if (token && refreshToken && !user) {
       const fetchUser = async () => {
         try {
-          const response = await fetch('http://localhost:5000/api/users/me', {
+          const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/me`, {  //'http://localhost:5000/api/users/me'
             headers: {
               Authorization: `Bearer ${token}`,
               'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ const App: React.FC = () => {
         throw new Error('No refresh token available');
       }
 
-      const response = await fetch('http://localhost:5000/api/auth/logout', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/logout`, { //'http://localhost:5000/api/auth/logout'
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

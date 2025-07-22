@@ -47,14 +47,14 @@ const CropStatistics: React.FC = () => {
         
         // First get total count
         const countResponse = await fetch(
-          `https://api.data.gov.in/resource/35be999b-0208-4354-b557-f6ca9a5355de?api-key=579b464db66ec23bdd000001caa76c4633e24c937b987e94eb25c2d9&format=json&limit=1`
+          `${import.meta.env.VITE_STATISTICS_API_URL}&format=json&limit=1`
         );
         const countResult = await countResponse.json();
         setTotalRecords(countResult.total || 0);
 
         // Then fetch actual data with pagination
         const response = await fetch(
-          `https://api.data.gov.in/resource/35be999b-0208-4354-b557-f6ca9a5355de?api-key=579b464db66ec23bdd000001caa76c4633e24c937b987e94eb25c2d9&format=json&limit=1000`
+          `${import.meta.env.VITE_STATISTICS_API_URL}&format=json&limit=1000`
         );
         const result = await response.json();
         

@@ -33,8 +33,8 @@ const MarketPrices: React.FC<MarketPricesProps> = ({
   const [loadingMore, setLoadingMore] = useState(false);
   const itemsPerPage = 50;
 
-  const apiKey = "579b464db66ec23bdd000001caa76c4633e24c937b987e94eb25c2d9";
-  const baseUrl = "https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070";
+  const apiKey = `${import.meta.env.VITE_PRICE_APIKEY_API_URL}`;
+  const baseUrl = `${import.meta.env.VITE_PRICE_BASEURL_API_URL}`;
   const limit = 1000;
 
   // Preprocess prices for efficient search

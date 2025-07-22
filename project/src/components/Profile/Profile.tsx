@@ -36,7 +36,7 @@ const Profile: React.FC<ProfileProps> = ({ user, onUpdateUser }) => {
   const handleSave = async () => {
     try {
     
-      const response = await fetch(`http://localhost:5000/api/users/${user._id}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/${user._id}`, { //http://localhost:5000/api/users/${user._id}
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -137,7 +137,7 @@ const Profile: React.FC<ProfileProps> = ({ user, onUpdateUser }) => {
       formData.append('folder', 'samples/ecommerce/profile_images');
 
       const response = await fetch(
-        `https://api.cloudinary.com/v1_1/dfwbkheoh/upload`,
+        `${import.meta.env.VITE_CLOUDINARY_API_URL}`,
         {
           method: 'POST',
           body: formData,
@@ -191,7 +191,7 @@ const Profile: React.FC<ProfileProps> = ({ user, onUpdateUser }) => {
       formData.append('folder', 'samples/ecommerce');
 
       const response = await fetch(
-        `https://api.cloudinary.com/v1_1/dfwbkheoh/upload`,
+        `${import.meta.env.VITE_CLOUDINARY_API_URL}`,
         {
           method: 'POST',
           body: formData,

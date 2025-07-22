@@ -202,8 +202,7 @@ const ColdChainProjects: React.FC = () => {
   const [sortOption, setSortOption] = useState<string>("state");
   const itemsPerPage = 10;
 
-  const apiKey = "579b464db66ec23bdd000001caa76c4633e24c937b987e94eb25c2d9";
-  const baseUrl = "https://api.data.gov.in/resource/0b827ac7-ebad-47c1-9cc9-816ce4ab10a7";
+
 
   const fetchData = async () => {
     setLoading(true);
@@ -213,12 +212,12 @@ const ColdChainProjects: React.FC = () => {
       let offset = 0;
       const limit = 1000;
 
-      const countUrl = `${baseUrl}?api-key=${apiKey}&format=json&limit=1`;
+      const countUrl = `${import.meta.env.VITE_COLD_API_URL}&format=json&limit=1`;
       const countRes = await axios.get(countUrl);
       const totalRecords = Number(countRes.data.total);
 
       while (offset < totalRecords) {
-        const url = `${baseUrl}?api-key=${apiKey}&format=json&limit=${limit}&offset=${offset}`;
+        const url = `${import.meta.env.VITE_COLD_API_URL}&format=json&limit=${limit}&offset=${offset}`;
         const res = await axios.get(url);
         allRecords = [...allRecords, ...res.data.records];
         offset += limit;
