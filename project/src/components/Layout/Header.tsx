@@ -11,7 +11,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ user, onLogout, setActiveTab }) => {
   return (
     <header className="bg-white shadow-sm p-4 flex justify-between items-center">
-      <div className="text-xl font-bold text-gray-900">Farmers Portal</div>
+      <div className="text-xl font-bold text-gray-900">AgriTrack</div>
       <div className="flex items-center space-x-4">
         <div className="flex items-center space-x-2">
           <span className="text-gray-600">{user.name || 'User'}</span>
