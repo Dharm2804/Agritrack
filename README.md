@@ -1,245 +1,217 @@
-# 🌾 AgriTrack
+# 📋 Table of Contents
 
-**AgriTrack** is an **AI-powered GPS trajectory classification system** that automatically distinguishes between *productive agricultural work* and *overhead activities* for equipment sharing operations.  
-It helps solve billing disputes in agricultural equipment sharing markets, especially in developing regions where **45% of transactions end in disputes**.
+* [About](#-about)
+* [Features](#-features)
+* [Demo](#-demo)
+* [Tech Stack](#-tech-stack)
+* [Getting Started](#-getting-started)
 
----
-
-## 🧩 Problem Statement
-
-### 🚜 Trust Breakdown
-Farmers renting tractors have no way to verify if operators actually worked the claimed hours.
-
-### ⚖️ Billing Disputes
-Around **45%** of agricultural equipment sharing transactions end in disputes due to unverifiable work hours.
-
-### 🌍 Equipment Sharing Economy
-Nearly **80% of Ghanaian farmers** depend on shared equipment but lack effective verification tools.
-
----
-
-## 💡 The Solution
-
-AgriTrack leverages **Dynamic Time Warping (DTW)** and **HDBSCAN clustering** to classify GPS trajectories with **81.7% accuracy**, while using just **127 MB of memory** — making it perfect for low-cost, offline environments.
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+  * [Running the Application](#running-the-application)
+* [Usage](#-usage)
+* [Project Structure](#-project-structure)
+* [Contributing](#-contributing)
+* [License](#-license)
+* [Contact](#-contact)
 
 ---
 
-## ✨ Key Features
+## 🎯 About
 
-- 🎯 **Automated Work Classification** – Distinguishes productive agricultural work from overhead activities  
-- 📊 **Interactive Dashboard** – Real-time GPS data visualization via Streamlit  
-- 💾 **Low Resource Usage** – Runs on $50 hardware with offline support  
-- 🔍 **High Accuracy** – Achieves 81.7% classification accuracy (DTW + HDBSCAN)  
-- 📈 **Real Agricultural Data** – Validated using actual farm GPS data  
-- 🐳 **Dockerized Deployment** – Simple containerized setup for easy deployment  
+*AgriTrack* is a smart agriculture management platform designed to help farmers and agricultural organizations monitor crop health, manage field activities, and optimize yield through data-driven insights. The platform provides real-time tracking, analytics, and reporting tools to make informed farming decisions efficiently.
+
+Whether you are an individual farmer or part of a large agribusiness, *AgriTrack* empowers you to digitize your farming operations and enhance productivity with ease.
 
 ---
 
-## 🏗️ System Architecture
+## ✨ Features
 
-┌─────────────────────┐
-│ GPS Data Input │
-└──────────┬──────────┘
-│
-▼
-┌─────────────────────┐
-│ Trajectory Analysis │
-│ (DTW Algorithm) │
-└──────────┬──────────┘
-│
-▼
-┌─────────────────────┐
-│ HDBSCAN Clustering │
-│ (Work vs Overhead) │
-└──────────┬──────────┘
-│
-▼
-┌─────────────────────┐
-│ Streamlit Dashboard │
-│ (Visualization) │
-└─────────────────────┘
+* *Crop Monitoring* – Track crop growth and health using data visualization and sensors
+* *Field Management* – Log farming activities such as irrigation, pesticide use, and harvesting
+* *Weather Insights* – Get real-time weather forecasts and recommendations
+* *Inventory Tracking* – Manage fertilizers, seeds, and tools efficiently
+* *Analytics Dashboard* – View yield performance, productivity metrics, and resource usage
+* *Farmer Profile System* – Maintain user details, farm locations, and crop information
+* *Report Generation* – Generate and export reports for better planning and record-keeping
 
-yaml
-Copy code
+---
+
+## 🎥 Demo
+
+<!-- Add your demo link or screenshot here -->
+
+*[Live Demo](#)* | *[Video Walkthrough](#)*
+![Show Image](screenshots/demo.png)
+
+---
+
+## 🛠 Tech Stack
+
+### *Frontend*
+
+* React.js / Next.js
+* Tailwind CSS
+* Redux / Context API
+
+### *Backend*
+
+* Node.js
+* Express.js
+* MongoDB / PostgreSQL
+
+### *Additional Tools*
+
+* JWT for authentication
+* Bcrypt for password hashing
+* Axios for API calls
+* Chart.js / Recharts for data visualization
 
 ---
 
 ## 🚀 Getting Started
 
-### 🧾 Prerequisites
-- Python **3.8+**
-- **pip** package manager
-- **Docker** *(optional, for containerized deployment)*
+### *Prerequisites*
+
+Before you begin, ensure you have the following installed:
+
+* Node.js (v14 or higher)
+* npm or yarn
+* MongoDB / PostgreSQL (depending on your setup)
 
 ---
 
-### ⚙️ Installation
+### *Installation*
 
-#### 1. Clone the Repository
-```bash
+*1. Clone the repository*
+
+bash
 git clone https://github.com/Dharm2804/Agritrack.git
 cd Agritrack
-2. Install Dependencies
+
+
+*2. Install dependencies for the backend*
+
 bash
-Copy code
-pip install -r requirements.txt
-3. Run the Application
+cd backend
+npm install
+
+
+*3. Install dependencies for the frontend*
+
 bash
-Copy code
-streamlit run app.py
-4. Access the Dashboard
-Open your browser and navigate to http://localhost:8501
+cd ../frontend
+npm install
 
-🐳 Docker Deployment
+
+*4. Create environment variables*
+
+Create a .env file in the backend directory:
+
+env
+PORT=5000
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+NODE_ENV=development
+
+
+Create a .env.local file in the frontend directory:
+
+env
+REACT_APP_API_URL=http://localhost:5000
+
+
+---
+
+### *Running the Application*
+
+*Start the backend server*
+
 bash
-Copy code
-# Build Docker image
-docker build -t agritrack .
+cd backend
+npm start
 
-# Run Docker container
-docker run -p 8501:8501 agritrack
-📊 How It Works
-Data Collection
-GPS trajectories are collected from agricultural machinery during operations.
 
-Dynamic Time Warping (DTW)
-Analyzes trajectory patterns to find similarities and differences in movements.
+*Start the frontend development server*
 
-HDBSCAN Clustering
-Groups trajectories into:
-
-Productive Work – actual field activities (plowing, harvesting, planting)
-
-Overhead Activities – transit, idle time, repositioning
-
-Classification & Reporting
-Generates detailed reports with:
-
-Total productive vs. overhead time
-
-Visual trajectory maps
-
-Billing verification summaries
-
-💼 Use Cases
-Equipment Rental Companies – Verify operator work hours automatically
-
-Farm Management Systems – Track productivity and equipment usage
-
-Billing Verification – Transparent, data-driven payment calculation
-
-Agricultural Cooperatives – Monitor shared equipment usage
-
-Insurance Providers – Validate usage claims objectively
-
-📈 Performance Metrics
-Metric	Value
-Classification Accuracy	81.7%
-Memory Usage	127 MB
-Hardware Cost	$50
-Offline Capability	✅ Yes
-Processing Speed	⚡ Real-time
-
-🛠️ Technology Stack
-Python – Core programming language
-
-Streamlit – Interactive dashboard
-
-NumPy / Pandas – Data processing
-
-Scikit-learn – ML utilities
-
-HDBSCAN – Density-based clustering
-
-DTW (Dynamic Time Warping) – Trajectory analysis
-
-Plotly / Matplotlib – Data visualization
-
-Docker – Containerization
-
-📁 Project Structure
 bash
-Copy code
+cd frontend
+npm start
+
+
+The application should now be running on:
+👉 [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 📖 Usage
+
+1. *Sign Up / Login* – Create a user or admin account to access features
+2. *Add Farm Details* – Enter crop type, field size, and location
+3. *Monitor Crops* – View crop health and growth data through the dashboard
+4. *Record Activities* – Log daily operations like irrigation or fertilization
+5. *Analyze Reports* – Use analytics to plan and improve future yields
+
+---
+
+## 📁 Project Structure
+
+
 Agritrack/
-├── app.py                  # Main Streamlit app
-├── requirements.txt        # Dependencies
-├── Dockerfile              # Docker configuration
-├── data/                   # Sample GPS data
-├── models/                 # Classification models
-├── utils/                  # Helper scripts
-│   ├── dtw_analyzer.py     # DTW implementation
-│   └── clustering.py       # HDBSCAN clustering logic
-└── README.md               # Project documentation
-🌍 Impact
-AgriTrack empowers agricultural communities by addressing key challenges such as:
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── utils/
+│   │   ├── styles/
+│   │   └── App.js
+│   └── package.json
+├── backend/
+│   ├── config/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── middleware/
+│   └── server.js
+├── screenshots/
+└── README.md
 
-High equipment costs and limited ownership
 
-Lack of trust in operator-reported work hours
+---
 
-Absence of digital verification tools
+## 🤝 Contributing
 
-Need for offline functionality in rural regions
+Contributions are always welcome! If you'd like to improve AgriTrack, please follow these steps:
 
-Outcome:
-✅ Fair billing
-✅ Increased trust
-✅ Efficient resource use
-✅ Boosted productivity
+1. Fork the Project
+2. Create your Feature Branch (git checkout -b feature/AmazingFeature)
+3. Commit your Changes (git commit -m 'Add some AmazingFeature')
+4. Push to the Branch (git push origin feature/AmazingFeature)
+5. Open a Pull Request
 
-🤝 Contributing
-We welcome contributions from the community!
-To contribute:
+---
 
-Fork the repository
+## 📄 License
 
-Create a feature branch
+This project is licensed under the *MIT License* – see the [LICENSE](LICENSE) file for details.
 
-bash
-Copy code
-git checkout -b feature/AmazingFeature
-Commit your changes
+---
 
-bash
-Copy code
-git commit -m 'Add some AmazingFeature'
-Push to your branch
+## 📧 Contact
 
-bash
-Copy code
-git push origin feature/AmazingFeature
-Open a Pull Request
+*Dharm Patel* – [@Dharm2804](https://github.com/Dharm2804)
+*Om Hirvania* – [@omhirvania123](https://github.com/omhirvania123)
 
-📝 License
-This project is licensed under the MIT License – see the LICENSE file for details.
+📎 *Project Link:* [https://github.com/Dharm2804/Agritrack](https://github.com/Dharm2804/Agritrack)
 
-👥 Authors
-Dharm2804 – Initial Work
-🔗 GitHub Profile
+---
 
-🙏 Acknowledgments
-Inspired by real challenges faced by Ghanaian farmers in equipment sharing
+## 🙏 Acknowledgments
 
-Built with low-resource constraints in mind
-
-Thanks to the agricultural community for testing and feedback
-
-📞 Contact & Support
-🐛 GitHub Issues – Report bugs
-
-💬 GitHub Discussions – Share ideas
-
-📧 For other inquiries, please open an issue on the repository
-
-🗺️ Roadmap
-📱 Mobile app for field data collection
-
-🌐 Multi-language support
-
-🔗 Integration with farm management systems
-
-📊 Advanced analytics and reporting
-
-📡 Real-time monitoring features
-
-🚜 Support for more equipment types
+* [React Documentation](https://react.dev/)
+* [Node.js Documentation](https://nodejs.org/en/docs)
+* [MongoDB Documentation](https://www.mongodb.com/docs/)
+* [Tailwind CSS](https://tailwindcss.com/)
+* [Chart.js](https://www.chartjs.org/)
+* [Lucide Icons](https://lucide.dev/)
