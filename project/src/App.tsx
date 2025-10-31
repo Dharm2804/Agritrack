@@ -86,6 +86,7 @@ const App: React.FC = () => {
         const data = await response.json();
         throw new Error(data.message || 'Logout failed');
       }
+      // dashboard
 
       setUser(null);
       setToken(null);
