@@ -9,17 +9,14 @@
 
 * [🎯 About](#-about)
 * [✨ Features](#-features)
-* [🎥 Demo](#-demo)
 * [🛠 Tech Stack](#-tech-stack)
 * [🚀 Getting Started](#-getting-started)
 
   * [📦 Prerequisites](#-prerequisites)
   * [⚙ Installation](#-installation)
-  * [▶ Running the Application](#-running-the-application)
 * [📖 Usage](#-usage)
 * [📁 Project Structure](#-project-structure)
 * [🤝 Contributing](#-contributing)
-* [📄 License](#-license)
 * [📧 Contact](#-contact)
 * [🙏 Acknowledgments](#-acknowledgments)
 
@@ -45,15 +42,6 @@ The system combines smart data tracking with modern UI design to promote sustain
 
 ---
 
-## 🎥 Demo
-
-<!-- Add your demo link or screenshot here -->
-
-🔗 *[Live Demo](#)* | 🎬 *[Video Walkthrough](#)*
-
-![Show Image](screenshots/demo.png)
-
----
 
 ## 🛠 Tech Stack
 
@@ -152,7 +140,7 @@ cd frontend
 npm start
 
 
-The app should now be running at 👉 *[http://localhost:3000](http://localhost:3000)*
+The app should now be running at 👉 *[http://localhost:3000](http://localhost:5173)*
 
 ---
 
@@ -219,18 +207,13 @@ To contribute:
 
 ---
 
-## 📄 License
-
-This project is licensed under the *MIT License* — see the [LICENSE](LICENSE) file for details.
-
----
-
 ## 📧 Contact
 
 *Developers:*
 
-* Dharm Patel – [@Dharm2804](https://github.com/Dharm2804)
-* Om Hirvania – [@omhirvania123](https://github.com/omhirvania123)
+* Dharm Kasundrs – [@Dharm2804](https://github.com/Dharm2804)
+* Kiran Baraiya – [@kiran385](https://github.com/kiran385)
+* Keyur Kheni Hirvania – [@kzkheni](https://github.com/kzkheni)
 
 📎 *Project Link:* [https://github.com/Dharm2804/Agritrack](https://github.com/Dharm2804/Agritrack)
 
